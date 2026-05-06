@@ -43,7 +43,7 @@ To get these insights, we used a "smart" computer model that learns from real-wo
 
 The first thing that was apparent from the provided data was that it was not clean, it had missing values and some of the values were not realistic for used cars, for example, odometer with zero and single digit values; price with zero and single digits values.
 
-![Box Plot of Price of vehicles vs Condition!](./images/Box-Plot-of-Price-of-vehicles-vs-Condition.png)
+![Box Plot of Price of vehicles vs Condition!](images/BoxPlotPriceVSCondition.png)
 
 As you can see from the Diagram above, there are car prices with zero value for all conditions.
 
@@ -56,7 +56,7 @@ Summary of the Data Preparation is as follows:
 - Review and remove the other factors (i.e., state, paint color, manufacturer, transmission etc.) and check if they have an impact on car price based on the provided data
 - Filtering the data based on year on manufacture = 1990 as the number of vehicles before 1990 were very low
 
-![Histogram Plot of Used Cars by Year > 1990!](./images/Histogram-Plot-of-Used-Cars-by-Year-greater-than-1990.png)
+![Histogram Plot of Used Cars by Year > 1990!](images/HistPlotUserCarByYearGT1990.png)
 
 ## Regression Models
 
@@ -124,7 +124,7 @@ When we analyze the importance of feature selection based on the trained model, 
 
 As the data provided is not that clean with null, NAN, zero, missing and unrealistic values, further filering of the data could be done, for example, selecting used car records with year => 2000. 
 
-![Histogram Plot of Used Cars by Year > 2000!](./images/Histogram-Plot-of-Used-Cars-by-Year-greater-than-2000.png)
+![Histogram Plot of Used Cars by Year > 2000!](./images/HistPlotUserCarByYearGT2000.png)
 
 This should allow the model to use more of the newer car features like model, cylinders, drive, size which may have a greater influence on newer used car prices with lower odometer. This may also lead to a higher/better model accuracy (i.e., > 50%)
 
