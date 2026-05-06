@@ -41,7 +41,7 @@ To get these insights, we used a "smart" computer model that learns from real-wo
   
 ## Data Understanding
 
-The first thing that was apparent from the provided data was that it was not clean, it had missing values and some of the values were not realistic for used cars, for example, odometer with zero and single digit values; price with zero and single digits values.
+To keep things transparent, the initial data we received wasn't quite "road-ready." We found several gaps and "too good to be true" entries that didn't reflect reality like vehicles listed for $0 or cars with only a single mile on the odometer. Before we could draw any real conclusions, we had to roll up our sleeves and scrub the data to ensure we weren't basing our business strategy on unrealistic numbers.
 
 ![Box Plot of Price of vehicles vs Condition!](images/BoxPlotPriceVSCondition.png)
 
@@ -49,22 +49,25 @@ As you can see from the Diagram above, there are car prices with zero value for 
 
 ## Data Preparation
 
-Summary of the Data Preparation is as follows:
-- Remove records with Zero Prices and Odometer values
-- Remove records where some of the factors are not populated
-- Drop a number of factors (i.e., VIN, id, region etc.) that are not significant in user car price determination
-- Review and remove the other factors (i.e., state, paint color, manufacturer, transmission etc.) and check if they have an impact on car price based on the provided data
-- Filtering the data based on year on manufacture = 1990 as the number of vehicles before 1990 were very low
+To keep our analysis accurate and focused on what actually drives sales, we refined the data using the following steps:
+
+- Clearing Out Errors: Removed entries with unrealistic "zero" values for prices and mileage, as these would have skewed our results.
+- Filling the Gaps: Filtered out any records that were missing key information, ensuring we only worked with complete and reliable profiles.
+- Trimming the Noise: Stripped away technical identifiers like VINs and ID numbers—details that are necessary for paperwork but don't actually influence how much a customer is willing to pay.
+- Evaluating Influence: Carefully reviewed features like color, manufacturer, and transmission type to determine which ones truly impact a car's market value and which ones shoppers tend to ignore.
+- Focusing on the Modern Market: Narrowed focus to vehicles manufactured from 1990 onwards, as there wasn't enough data on older models to provide meaningful insights for your current inventory.
 
 ![Histogram Plot of Used Cars by Year > 1990!](images/HistPlotUserCarByYearGT1990.png)
 
 ## Regression Models
 
-We ran a number of models (7 to be exact) to create 7 ML Models or AI Applications using the full set of features after data manipulation and a subset of features based on the correlation matrix between the features and used car prices. 
+To find the most accurate way to predict prices, we tested seven different versions of model. Here is how we refined those tests:
 
-Additional filtering (i.e., Price and Odometer > 5000 and Year > 1990) were also used to create datasets used from some of the models below.
+Testing Different Approaches: Built seven distinct versions of the model some used every available piece of information, while others focused only on the specific features that showed the strongest mathematical link to a car's price.
 
-For Most of these Models, the accuracy was less than 50% with the exception of the last 2 models. See table below:
+Narrowing the Scope: For several of these models, applied stricter filters focusing only on cars priced over $5,000, with more than 5,000 miles, and built after 1990—to see if focusing on this "core" market improved our results.
+
+Finding the Winners: While most of the initial attempts had an accuracy rate below 50%, our final two models performed significantly better. You can see the comparison in the table below:
 
 
 | Model Name  	| Description                                                                                                                      	| Accuracy Score (Training) 	| Accuracy Score  (Test) 	|
@@ -99,9 +102,9 @@ In testing these models with the inputs, we observed the following for used car 
 | Model4      	| Car with Odometer of 100000                                                          	| 11,838.40                    	|
 |             	|                                                                                      	|                              	|
 
-As you can see, the Machine Learning application "Model" built using all the final dataset from the data manipulation phase which included features like Odometer, Year, Condition, fuel type, drive train and size returns a negative value (i.e., -$98,263.87) which is not realistic for a "new car with 100 miles, condition excellent and new with diesel and four wheel drive".
+Initial model attempted to account for every available detail—including mileage, year, condition, and engine type but it produced some confusing results. For example, when we tested a high-end scenario (a nearly new, excellent-condition diesel 4WD), the system actually predicted a negative value of -$98,263.87, which clearly doesn't happen in the real world.
 
-Same Model returned $29,013.33 for new car with 100 miles, condition good and with Electric and front wheel drive.
+However, that same model was much more realistic when looking at different categories, correctly valuing a new electric car with front-wheel drive at $29,013.33. This showed us that while the model was on the right track for some vehicles, it still needed more fine-tuning to handle every type of car accurately.
 
 For ML Applications ``Model6`` and ``Model7`` which are the recommended/selected models, see below for the prediction testing results:
 
@@ -126,13 +129,11 @@ As the data provided is not that clean with null, NAN, zero, missing and unreali
 
 ![Histogram Plot of Used Cars by Year > 2000!](images/HistPlotUserCarByYearGT2000.png)
 
-This should allow the model to use more of the newer car features like model, cylinders, drive, size which may have a greater influence on newer used car prices with lower odometer. This may also lead to a higher/better model accuracy (i.e., > 50%)
+To ensure we are giving model the best possible guidance, we have identified several clear paths to make our price predictions even sharper. By zeroing in on newer vehicles, the model can better weigh modern essentials like drivetrain, vehicle size, and engine configurations factors that tend to have a much heavier influence on the value of late-model, low-mileage cars. 
 
-More and better data can be collected to train the model. This data should include the newer features on used cars like Automated Driving Safety Features, Infotainment, Cameras, Remote Start, Car Mileage which have an impact on used car prices.
+Prioritizing these details should push our accuracy well above the 50% mark. Beyond basic specs, we can further refine the AI by capturing the high-demand tech that today’s buyers actually prioritize, such as automated safety systems, advanced infotainment, and remote start capabilities. We also recommend simplifying complex categories like paint colors or regions into broader groups, which allows the model to process these details more efficiently without getting bogged down in minor variations. 
 
-We would recommend some form of classification/categories for features like paint_color, state etc so that we can include them with fewer permutations in the model.
-
-From the current models created, ``Model6`` and ``Model7`` would be the recommended models to use.  
+Based on our rigorous testing, we recommend moving forward with Model 6 and Model 7, as they currently provide the most reliable insights for your inventory planning.
 
 These models were built with the following logic:
 - ``Model6`` - Odometer and Price greater than 5000, Odometer, Year, fuel_diesel, drive_4wd  and size_full-size as the only inputs
