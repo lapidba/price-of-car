@@ -124,13 +124,11 @@ When we analyze the importance of feature selection based on the trained model, 
 
 As the data provided is not that clean with null, NAN, zero, missing and unrealistic values, further filering of the data could be done, for example, selecting used car records with year => 2000. 
 
-![Histogram Plot of Used Cars by Year > 2000!](./images/HistPlotUserCarByYearGT2000.png)
+![Histogram Plot of Used Cars by Year > 2000!](images/HistPlotUserCarByYearGT2000.png)
 
 This should allow the model to use more of the newer car features like model, cylinders, drive, size which may have a greater influence on newer used car prices with lower odometer. This may also lead to a higher/better model accuracy (i.e., > 50%)
 
 More and better data can be collected to train the model. This data should include the newer features on used cars like Automated Driving Safety Features, Infotainment, Cameras, Remote Start, Car Mileage which have an impact on used car prices.
-
-Additional Data on used car datasets can be downloaded from [Kaggle Used Cars Datasets](https://www.kaggle.com/search?q=used+cars)
 
 We would recommend some form of classification/categories for features like paint_color, state etc so that we can include them with fewer permutations in the model.
 
