@@ -4,7 +4,7 @@
 
  * [Introduction](#Introduction)
  * [Project Structure](#Project-Structure)
- * [Executive Understanding](#Executive-Understanding)
+ * [Contextual Intelligence](#Contextual-Intelligence)
  * [Data Understanding](#Data-Understanding)
  * [Data Preparation](#Data-Preparation)
  * [Regression Model](#Regression-Model)
@@ -23,7 +23,7 @@ This repository contains the Jupyter Notebook for evaluating prcie of used car. 
 - `images/`: Generated visualizations.
 
 ---
-## Executive Understanding
+## Contextual Intelligence
 The goal of this project is to pinpoint exactly what makes a used car sell. By identifying the specific features that drive value and demand, we are giving Car Dealers and Sales Teams a roadmap for their inventory. Instead of guessing what might move off the lot, you’ll have a data-backed strategy to stock the vehicles that will actually increase your sales.
 
 How it Works
