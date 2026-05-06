@@ -10,7 +10,6 @@
  * [Regression Model](#Regression-Model)
  * [Findings](#Findings)
  * [Next steps and Recommendations](#Next-steps-and-Recommendations)
- * 
 
 ## Introduction
 
@@ -39,7 +38,38 @@ To get these insights, we used a "smart" computer model that learns from real-wo
 ![Machine Learning Overview!](images/Machine-Learning-Process-Overview.png)
 
 --
-                              	| 44.54                     	| 43.09                  	|
+  
+## Data Understanding
+
+The first thing that was apparent from the provided data was that it was not clean, it had missing values and some of the values were not realistic for used cars, for example, odometer with zero and single digit values; price with zero and single digits values.
+
+![Box Plot of Price of vehicles vs Condition!](./images/Box-Plot-of-Price-of-vehicles-vs-Condition.png)
+
+As you can see from the Diagram above, there are car prices with zero value for all conditions.
+
+## Data Preparation
+
+Summary of the Data Preparation is as follows:
+- Remove records with Zero Prices and Odometer values
+- Remove records where some of the factors are not populated
+- Drop a number of factors (i.e., VIN, id, region etc.) that are not significant in user car price determination
+- Review and remove the other factors (i.e., state, paint color, manufacturer, transmission etc.) and check if they have an impact on car price based on the provided data
+- Filtering the data based on year on manufacture = 1990 as the number of vehicles before 1990 were very low
+
+![Histogram Plot of Used Cars by Year > 1990!](./images/Histogram-Plot-of-Used-Cars-by-Year-greater-than-1990.png)
+
+## Regression Models
+
+We ran a number of models (7 to be exact) to create 7 ML Models or AI Applications using the full set of features after data manipulation and a subset of features based on the correlation matrix between the features and used car prices. 
+
+Additional filtering (i.e., Price and Odometer > 5000 and Year > 1990) were also used to create datasets used from some of the models below.
+
+For Most of these Models, the accuracy was less than 50% with the exception of the last 2 models. See table below:
+
+
+| Model Name  	| Description                                                                                                                      	| Accuracy Score (Training) 	| Accuracy Score  (Test) 	|
+|-------------	|:----------------------------------------------------------------------------------------------------------------------------------	|:-------------------------:	|:----------------------:	|
+| Model       	| Built with all features from data manipulation dataset                                                                           	| 44.54                     	| 43.09                  	|
 | Model1      	| Odometer and Year as inputs from data manipulation dataset                                                                       	| 6.94                      	| 1.92                   	|
 | Model2      	| Odometer and Price greater than 5000, Odometer and Year as inputs                                                                	| 12.45                     	| 12.54                  	|
 | Model3      	| Odometer and Price greater than 5000, Year as the only input                                                                     	| 0.3                       	| 0.26                   	|
@@ -117,7 +147,3 @@ These models  provided the following model feature selection:
 For Next Steps, while the recommended models (i.e., ``Model7`` etc.) can be deployed, we would also recommend gathering more quality data that would produce a model with an accuracy of 75%+ based on used cars data no more than 10-15 years old.
 
 Updated data should also provide a better indication on the latest features that consumers are looking for so that the Dealership can source these cars for their inventory.
-
----
-
-*For a detailed look at the code and methodology, please refer to the [Jupyter Notebook](used_car_analysis.ipynb).*
