@@ -15,14 +15,12 @@
 
 This repository contains the Jupyter Notebook for evaluating prcie of used car. This model takes used car data [vehicles.csv] file in the data folder of this repository to build a machine learning model application that evaluates if vehicles features like Fuel, Condition, Size, Type, Color etc. can be used to determine used car prices for the Car Dealership and Sales Team. This evaluation will help the Car Dealership with fine tuning their inventory by stocking cars that consumers are interested in.
 
---
 ## Project Structure
 - `used_car_analysis.ipynb`: The complete technical analysis and modeling process.
 - `README.md`: This report.
 - `data/vehicles.csv`: The raw dataset.
 - `images/`: Generated visualizations.
 
----
 ## Contextual Intelligence
 The goal of this project is to pinpoint exactly what makes a used car sell. By identifying the specific features that drive value and demand, we are giving Car Dealers and Sales Teams a roadmap for their inventory. Instead of guessing what might move off the lot, you’ll have a data-backed strategy to stock the vehicles that will actually increase your sales.
 
@@ -36,8 +34,6 @@ To get these insights, we used a "smart" computer model that learns from real-wo
 - **Testing & Accuracy:** We put the model to the test to ensure its predictions match reality, giving you confidence in the results.
 
 ![Machine Learning Overview!](images/Machine-Learning-Process-Overview.png)
-
---
   
 ## Data Understanding
 
